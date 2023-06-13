@@ -58,7 +58,7 @@ kind: ImageVulnerabilityScan
 metadata:
   name: carbon-black-ivs
 spec:
-  image: harbor-repo.vmware.com/dockerhub-proxy-cache/library/nginx@sha256:6650513efd1d27c1f8a5351cbd33edf85cc7e0d9d0fcb4ffb23d8fa89b601ba8
+  image: nginx@sha256:... # The image to be scanned. Digest must be specified.
   scanResults:
     location: registry/project/scan-results
   serviceAccountNames:
@@ -111,7 +111,7 @@ kind: ImageVulnerabilityScan
 metadata:
   name: snyk-ivs
 spec:
-  image: harbor-repo.vmware.com/dockerhub-proxy-cache/library/nginx@sha256:6650513efd1d27c1f8a5351cbd33edf85cc7e0d9d0fcb4ffb23d8fa89b601ba8
+  image: nginx@sha256:... # The image to be scanned. Digest must be specified.
   scanResults:
     location: registry/project/scan-results
   serviceAccountNames:
@@ -171,7 +171,7 @@ kind: ImageVulnerabilityScan
 metadata:
   name: prisma-ivs
 spec:
-  image: harbor-repo.vmware.com/dockerhub-proxy-cache/library/nginx@sha256:6650513efd1d27c1f8a5351cbd33edf85cc7e0d9d0fcb4ffb23d8fa89b601ba8
+  image: nginx@sha256:... # The image to be scanned. Digest must be specified.
   scanResults:
     location: registry/project/scan-results
   serviceAccountNames:
@@ -229,7 +229,7 @@ kind: ImageVulnerabilityScan
 metadata:
   name: trivy-ivs
 spec:
-  image: harbor-repo.vmware.com/dockerhub-proxy-cache/library/nginx@sha256:6650513efd1d27c1f8a5351cbd33edf85cc7e0d9d0fcb4ffb23d8fa89b601ba8
+  image: nginx@sha256:... # The image to be scanned. Digest must be specified.
   scanResults:
     location: registry/project/scan-results
   serviceAccountNames:
