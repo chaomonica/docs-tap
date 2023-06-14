@@ -5,10 +5,10 @@ This topic describes how to integrate Supply Chain Security Tools - Scan 2.0 wit
 ## Prequesites
 
 Before you can integrate Supply Chain Security Tools - Scan 2.0 with the Out of the Box Supply Chain:
-- Create an ImageVulnerabilityScan. You can either select from the provided samples or integrate your scanner:
-  - [ImageVulnerabilityScan samples](./ivs-custom-samples.hbs.md)
+- Create an ImageVulnerabilityScan. You can either integrate your scanner or select from the provided samples:
   - [Customize your own ImageVulnerabilityScan](./ivs-create-your-own.hbs.md)
-- Create a ClusterImageTemplate u
+  - [ImageVulnerabilityScan samples](./ivs-custom-samples.hbs.md)
+- [Create a ClusterImageTemplate](./clusterimagetemplates.hbs.md). The previously created ImageVulnerabilityScan needs to be incorporated into a ClusterImageTemplate.
 
 ## <a id="verifying-integration"></a> Verifying Integration
 
