@@ -590,6 +590,7 @@ docs.vmware.com is built.
               - [Snyk IVS sample](scst-scan/ivs-snyk.hbs.md)
               - [Prisma IVS sample](scst-scan/ivs-prisma.hbs.md)
               - [Trivy IVS sample](scst-scan/ivs-trivy.hbs.md)
+              - [Grype IVS sample](scst-scan/ivs-grype.hbs.md)
     - [Supply Chain Security Tools - Sign](scst-sign/overview.hbs.md)
     - [Supply Chain Security Tools – Store](scst-store/overview.hbs.md)
       - [Overview](scst-store/overview.hbs.md)

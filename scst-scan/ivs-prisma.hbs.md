@@ -64,7 +64,7 @@ Where:
 - `USERNAME` is the Access Key from the Prisma Cloud account.
 - `PASSWORD` is the Secret Key from the Prisma Cloud account.
 - `ADDRESS` is the URL for Console from the Prisma Cloud account.
-- `PRISMA-SCANNER-IMAGE` is the prisma scanner image with twistcli and podman from step 1.
+- `PRISMA-SCANNER-IMAGE` is the Prisma scanner image with twistcli and podman from step 1.
 
 
 **Note**: See the Prisma twistcli [docs](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images) for more information on CLI usage.

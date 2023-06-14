@@ -10,6 +10,7 @@ Below are sample ImageVulnerabilityScan (IVS) for various scanners. To use them,
 - [Snyk](./ivs-snyk.hbs.md)
 - [Prisma](./ivs-prisma.hbs.md)
 - [Trivy](./ivs-trivy.hbs.md)
+- [Grype](./ivs-grype.hbs.md)
 
 For information about integrating your own scanner, see [Integrate your own scanner](./app-scanning-alpha.hbs.md#integrate-your-own-scanner).
 
@@ -26,7 +27,7 @@ To use one of the samples:
    - `serviceAccountNames` includes:
      - `scanner` is the service account that runs the scan. It must have read access to `image`.
      - `publisher` is the service account that uploads results. It must have write access to `scanResults.location`.
-4. Complete any scanner specific changes specified in the sample.
+4. Complete any scanner specific changes specified on the sample ImageVulnerabilityScan page.
 5. You can either incorporate your custom ImageVulnerabilityScan into a [ClusterImageTemplate](./clusterimagetemplates.hbs.md) or run a standalone scan using:
 
   ```console
