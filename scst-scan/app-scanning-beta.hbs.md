@@ -19,7 +19,7 @@ to an OCI compliant registry.
 
 During scanning:
 
-- The `ImageVulnerabilityScan` then creates a [Tekton PipelineRun](https://tekton.dev/docs/pipelines/pipelineruns/) which instantiates a Pipeline. The Pipeline Spec specifies the tasks `workspace-setup-task`, `scan-task`, and `publish-task` to set up the workspace and environment configuration, run a scan, and publish results to an OCI compliant registry.
+- The `ImageVulnerabilityScan` creates a [Tekton PipelineRun](https://tekton.dev/docs/pipelines/pipelineruns/) which instantiates a Pipeline. The Pipeline Spec specifies the tasks `workspace-setup-task`, `scan-task`, and `publish-task` to set up the workspace and environment configuration, run a scan, and publish results to an OCI compliant registry.
 - Each Task contains steps which execute commands to achieve the goal of the Task.
 - The PipelineRun creates corresponding TaskRuns for every Task in the Pipeline and executes them.
 - A Tekton Sidecar as a [no-op sidecar](https://github.com/tektoncd/pipeline/blob/main/cmd/nop/README.md#stopping-sidecar-containers) triggers Tekton's injected sidecar cleanup.
@@ -31,5 +31,5 @@ During scanning:
 SCST - Scan 2.0 includes the following features:
 
 - Tekton is used as the orchestrator of the scan to align with overall Tanzu Application Platform use of Tekton for multi-step activities.
-- Users can define their own `ImageVulnerabilityScan` CR to run a specific scanner which turns the CR specifications into a Tekton PipelineRun.
+- Users can define their own `ImageVulnerabilityScan` Custom Resource (CR) to incorporate their own specifications. Mapping logic turns the domain-specific specifications into a Tekton PipelineRun.
 - CycloneDX-formatted scan results are pushed to an OCI registry for long-term storage.

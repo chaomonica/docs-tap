@@ -1,10 +1,12 @@
-## <a id="troubleshooting"></a> Troubleshooting
+# Troubleshooting
 
-### <a id="debugging-commands"></a> Debugging commands
+This topic provides information to help troubleshoot Supply Chain Security Tools - Scan 2.0.
+
+# <a id="debugging-commands"></a> Debugging commands
 
 The following sections describe commands you run to get logs and details about scanning errors.
 
-### <a id="debug-source-image-scan"></a> Debugging resources
+# <a id="debug-source-image-scan"></a> Debugging resources
 
 If a resource fails or has errors, inspect the resource.
 
@@ -16,11 +18,11 @@ kubectl describe RESOURCE RESOURCE-NAME -n DEV-NAMESPACE
 
 Where:
 
-- `RESOURCE` is one of the following: `GrypeImageVulnerabilityScan`, `ImageVulnerabilityScan`, `PipelineRun`, or `TaskRun`.
+- `RESOURCE` is one of the following: `ImageVulnerabilityScan`, `PipelineRun`, or `TaskRun`.
 - `RESOURCE-NAME` is the name of the `RESOURCE`.
 - `DEV-NAMESPACE` is the name of the developer namespace you want to use.
 
-### <a id="debugging-scan-pods"></a> Debugging scan pods
+# <a id="debugging-scan-pods"></a> Debugging scan pods
 
 To get error logs from a pod when scan pods fail:
 

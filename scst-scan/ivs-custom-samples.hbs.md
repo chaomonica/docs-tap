@@ -22,7 +22,7 @@ To use one of the samples:
 2. Obtain the one or more necessary images. For example, an image containing the scanner.
 3. Edit these common fields of your ImageVulnerabilityScan:
 
-   - `spec.image` is the image that you are scanning.
+   - `spec.image` is the image that you are scanning. **Note**: See [Retrieving an image digest](./ivs-custom-samples.hbs.md#retrieving-an-image-digest)
    - `scanResults.location` is the registry URL where results are uploaded. For example, `my.registry/scan-results`.
    - `serviceAccountNames` includes:
      - `scanner` is the service account that runs the scan. It must have read access to `image`.
@@ -35,3 +35,20 @@ To use one of the samples:
   ```
 
   Where `DEV-NAMESPACE` is the name of the developer namespace where scanning occurs.
+
+### <a id="retrieve-digest"></a> Retrieving an image digest
+
+SCST - Scan 2.0 custom resources require the digest form of the URL. For example,  `nginx@sha256:aa0afebbb3cfa473099a62c4b32e9b3fb73ed23f2a75a65ce1d4b4f55a5c2ef2`.
+
+Use the [Docker documentation](https://docs.docker.com/engine/install/) to pull and inspect an image digest:
+
+```console
+docker pull nginx:latest
+docker inspect --format='\{{index .RepoDigests 0}}' nginx:latest
+```
+
+Alternatively, you can install [krane](https://github.com/google/go-containerregistry/tree/main/cmd/krane) to retrieve the digest without pulling the image:
+
+```console
+krane digest nginx:latest
+```

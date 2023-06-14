@@ -1,6 +1,6 @@
 # Integrate your own scanner in an ImageVulnerabilityScan
 
-An `ImageVulnerabilityScan` allows you to scan with any scanner of any version by defining your scan as a [Tekton step](https://tekton.dev/docs/pipelines/tasks/#defining-steps).
+An `ImageVulnerabilityScan` allows you to scan with any scanner by defining your scan as a [Tekton step](https://tekton.dev/docs/pipelines/tasks/#defining-steps).
 
 ## <a id="sample-img-vuln"></a> Customize an ImageVulnerabilityScan
 
@@ -24,35 +24,35 @@ To customize an ImageVulnerabilityScan to use your scanner:
       steps:
       - name: scan
         image: SCANNER-IMAGE
-        command: ["SCANNER-COMMAND"]
+        command: ["SCANNER-CLI-COMMAND"]
         args:
         ...
     ```
 
     Where:
     - `DEV-NAMESPACE` is the developer namespace where scanning occurs.
-    - `spec.image` is the image that you are scanning.
+    - `spec.image` is the image that you are scanning. **Note**: See [Retrieving an image digest](./ivs-custom-samples.hbs.md#retrieving-an-image-digest)
     - `scanResults.location` is the registry URL where results are uploaded. For example, `my.registry/scan-results`.
     - `serviceAccountNames` includes:
         - `scanner` is the service account that runs the scan. It must have read access to `image`.
         - `publisher` is the service account that uploads results. It must have write access to `scanResults.location`.
     - `SCANNER-IMAGE` is the image containing the scanner of your choice.
-    - `SCANNER-COMMAND` is the scanner's CLI command.
+    - `SCANNER-CLI-COMMAND` is the scanner's CLI command.
 
     **Note**: Do not define `write-certs` or `cred-helper` as step names. These names are already used in steps during scanning.
 2. Configure the `scan` step. You will need to input your scanner specific `image`, `command`, and `args`. Below is an example:
     ```yaml
     - name: scan
-        image: anchore/grype:latest
-        command: ["grype"]
-        args:
-        - registry:$(params.image)
-        - -o
-        - cyclonedx
-        - --file
-        - $(params.scan-results-path)/scan.cdx
+      image: anchore/grype:latest
+      command: ["grype"]
+      args:
+      - registry:$(params.image)
+      - -o
+      - cyclonedx
+      - --file
+      - $(params.scan-results-path)/scan.cdx
     ```
-    To pass `spec.image` and `scanResults.location` to `arg`, you can use `$(params.image)` and `$(params.scan-results-path)`.
+    To pass `spec.image` and `scanResults.location` to `args`, you can use `$(params.image)` and `$(params.scan-results-path)`.
 
 ## <a id="img-vuln-config-options"></a> Configuration options
 
@@ -130,3 +130,19 @@ These parameters are populated after creating the GrypeImageVulnerabilityScan. F
 | image | "" | string | The scanned image |
 | scan-results-path | /workspace/scan-results | string | Location to save scanner output |
 | trusted-ca-certs  | "" | string | PEM data from the installation's `caCertData` |
+
+## <a id="retrieve-digest"></a> Retrieving an image digest
+
+SCST - Scan 2.0 custom resources require the digest form of the URL. For example,  `nginx@sha256:aa0afebbb3cfa473099a62c4b32e9b3fb73ed23f2a75a65ce1d4b4f55a5c2ef2`.
+
+Use the [Docker documentation](https://docs.docker.com/engine/install/) to pull and inspect an image digest:
+
+```console
+docker pull nginx:latest
+docker inspect --format='\{{index .RepoDigests 0}}' nginx:latest
+```
+
+Alternatively, you can install [krane](https://github.com/google/go-containerregistry/tree/main/cmd/krane) to retrieve the digest without pulling the image:
+
+```console
+krane digest nginx:latest

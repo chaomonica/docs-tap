@@ -1,30 +1,28 @@
-## <a id="observability"></a> Observability
+# Observability
+
+This topic provides information to help observe Supply Chain Security Tools - Scan 2.0.
 
 To watch the status of the scanning custom resources and child resources:
 
 ```console
-kubectl get grypeimagevulnerabilityscan,imagevulnerabilityscan
 kubectl get -l imagevulnerabilityscan pipelinerun,taskrun,pod
 ```
 
 View the status, reason, and urls:
 
 ```console
-kubectl get grypeimagevulnerabilityscan -o wide
 kubectl get imagevulnerabilityscan -o wide
 ```
 
 View the complete status and events of scanning custom resources:
 
 ```console
-kubectl describe grypeimagevulnerabilityscan
 kubectl describe imagevulnerabilityscan
 ```
 
 List the child resources of a scan:
 
 ```console
-kubectl get -l grypeimagevulnerabilityscan=$NAME pipelinerun,taskrun,pod,configmap
 kubectl get -l imagevulnerabilityscan=$NAME pipelinerun,taskrun,pod
 ```
 
