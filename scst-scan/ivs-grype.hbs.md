@@ -1,0 +1,1 @@
+# Configure a ImageVulnerabilityScan for Grype
