@@ -19,7 +19,6 @@ to an OCI compliant registry.
 
 During scanning:
 
-- A `GrypeImageVulnerabilityScan` creates the child resource `ImageVulnerabilityScan`.
 - The `ImageVulnerabilityScan` then creates a [Tekton PipelineRun](https://tekton.dev/docs/pipelines/pipelineruns/) which instantiates a Pipeline. The Pipeline Spec specifies the tasks `workspace-setup-task`, `scan-task`, and `publish-task` to set up the workspace and environment configuration, run a scan, and publish results to an OCI compliant registry.
 - Each Task contains steps which execute commands to achieve the goal of the Task.
 - The PipelineRun creates corresponding TaskRuns for every Task in the Pipeline and executes them.
